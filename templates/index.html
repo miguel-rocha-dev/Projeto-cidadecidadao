@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+
+{% set active_page = "inicio" %}
+
+{% block title %}Cidade Cidadã{% endblock %}
+
+{% block content %}
+<main class="portal-shell">
+  <section class="hero-section">
+    <div class="hero-copy">
+      <h1>A sua voz constrói <span>a nossa cidade.</span></h1>
+      <p>
+        O Portal da Ouvidoria Geral é o seu canal direto com a prefeitura.
+        Registre manifestações, acompanhe solicitações e participe ativamente
+        da gestão municipal com transparência e agilidade.
+      </p>
+      <div class="hero-buttons">
+        <a class="btn-primary portal-btn" href="#manifestacao">
+          <span aria-hidden="true">⊕</span>
+          Registrar Nova Manifestação
+        </a>
+        <a class="btn-secondary portal-btn" href="{{ url_for('consultar_protocolo') }}">
+          <span aria-hidden="true">⌕</span>
+          Consultar Protocolo
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-label="Prédio público municipal">
+      <div class="sky">
+        <span class="cloud cloud-one"></span>
+        <span class="cloud cloud-two"></span>
+        <div class="building">
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+      <div class="service-card">
+        <strong><span aria-hidden="true">ⓘ</span> Atendimento Ágil</strong>
+        <p>Nosso compromisso é responder sua solicitação no menor prazo possível.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="manifestation-area" id="manifestacao">
+    <aside class="info-panel">
+      <div>
+        <h2>Registre sua Manifestação</h2>
+        <p>
+          Preencha o formulário ao lado com os detalhes da sua solicitação.
+          Quanto mais informações, mais rápido será o atendimento.
+        </p>
+      </div>
+
+      <ul class="manifestation-types" aria-label="Tipos de manifestação">
+        <li>
+          <span class="type-icon complaint">□</span>
+          <div>
+            <strong>Reclamação ou Sugestão</strong>
+            <p>Ajude-nos a melhorar os serviços prestados à população.</p>
+          </div>
+        </li>
+        <li>
+          <span class="type-icon praise">▮</span>
+          <div>
+            <strong>Elogio</strong>
+            <p>Reconheça o bom atendimento ou serviço de um servidor.</p>
+          </div>
+        </li>
+        <li>
+          <span class="type-icon question">?</span>
+          <div>
+            <strong>Dúvida</strong>
+            <p>Esclareça dúvidas sobre serviços e procedimentos da prefeitura.</p>
+          </div>
+        </li>
+      </ul>
+    </aside>
+
+    <section class="form-card">
+      <form id="formManifestacao">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="tipo">Tipo de Manifestação <span>*</span></label>
+            <select id="tipo" required>
+              <option value="">Selecione o tipo...</option>
+              <option value="1">Reclamação</option>
+              <option value="2">Sugestão</option>
+              <option value="3">Elogio</option>
+              <option value="4">Dúvida</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="titulo">Título (Assunto) <span>*</span></label>
+            <input id="titulo" type="text" placeholder="Ex.: Buraco na via pública" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="descricao">Descrição Detalhada <span>*</span></label>
+          <textarea
+            id="descricao"
+            rows="6"
+            placeholder="Descreva sua manifestação com o máximo de detalhes possível, incluindo endereço completo se aplicável..."
+            required
+          ></textarea>
+        </div>
+
+        <hr />
+
+        <div class="contact-heading">
+          <h3>Informações de Contato (Opcional)</h3>
+          <p>Seus dados pessoais não são obrigatórios, mas nos ajudará a melhorar sua experiência conosco :)</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="form-group">
+            <label for="nome">Nome Completo</label>
+            <input id="nome" type="text" placeholder="Seu nome" />
+          </div>
+
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input id="email" type="email" placeholder="seu.email@exemplo.com" />
+          </div>
+
+          <div class="form-group">
+            <label for="telefone">Telefone</label>
+            <input id="telefone" type="text" placeholder="(00) 00000-0000" />
+          </div>
+        </div>
+
+        <div class="submit-row">
+          <button type="submit" class="btn-primary">Enviar Manifestação ▷</button>
+        </div>
+      </form>
+
+      <div id="resultado" class="resultado"></div>
+    </section>
+  </section>
+</main>
+{% endblock %}

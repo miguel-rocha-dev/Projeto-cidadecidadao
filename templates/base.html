@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Cidade Cidadã{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  </head>
+  <body class="portal-page {% block body_class %}{% endblock %}">
+    <header class="portal-header">
+      <a class="brand" href="{{ url_for('index') }}" aria-label="Cidade Cidadã">
+        <span>Cidade</span>
+        <strong>Cidadã</strong>
+      </a>
+
+      <nav class="main-nav" aria-label="Navegação principal">
+        <a class="{% if active_page == 'inicio' %}active{% endif %}" href="{{ url_for('index') }}">Início</a>
+        <a href="{{ url_for('index') }}#manifestacao">Nova Manifestação</a>
+        <a class="{% if active_page == 'consulta' %}active{% endif %}" href="{{ url_for('consultar_protocolo') }}">Consultar Protocolo</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-button" type="button" aria-label="Ajuda">?</button>
+        <button class="icon-button" type="button" aria-label="Notificações">⌂</button>
+        <a class="restricted-link" href="{{ url_for('login') }}">Acesso Restrito</a>
+      </div>
+    </header>
+
+    {% block content %}{% endblock %}
+
+    <footer class="portal-footer">
+      <strong>Cidade Cidadã</strong>
+      <nav aria-label="Links legais">
+        <a href="#">Privacidade</a>
+        <a href="#">Termos de Uso</a>
+        <a href="#">Ouvidoria Geral</a>
+        <a href="#">Portal da Transparência</a>
+      </nav>
+      <span>© 2024 Prefeitura de Cidade Cidadã - Controladoria Geral do Município</span>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/cidadao.js') }}"></script>
+    {% block scripts %}{% endblock %}
+  </body>
+</html>

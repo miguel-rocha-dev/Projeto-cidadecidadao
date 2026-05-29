@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}Acesso Restrito - Cidade Cidadã{% endblock %}
+{% block body_class %}login-page{% endblock %}
+
+{% block content %}
+<main class="login-shell">
+  <section class="login-card" aria-labelledby="login-title">
+    <div class="login-corners" aria-hidden="true">
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="login-icon" aria-hidden="true">▰</div>
+    <h1 id="login-title">Acesso Restrito</h1>
+    <p>Portal da Ouvidoria Geral</p>
+
+    <form class="login-form" method="post" action="{{ url_for('login') }}">
+      <div class="login-field">
+        <label for="email">E-mail</label>
+        <div class="login-input">
+          <span aria-hidden="true">✉</span>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="exemplo@cidadecida.gov.br"
+            autocomplete="email"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="login-field">
+        <div class="login-label-row">
+          <label for="senha">Senha</label>
+          
+        </div>
+        <div class="login-input">
+          <span aria-hidden="true">▣</span>
+          <input
+            id="senha"
+            name="senha"
+            type="password"
+            placeholder="Digite sua senha"
+            autocomplete="current-password"
+            required
+          />
+          <span aria-hidden="true">⊙</span>
+        </div>
+        <div class="login-label-row">
+            <a href="#">Esqueci minha senha</a>
+        </div>
+      </div>
+
+      {% if erro %}
+      <p class="login-error">{{ erro }}</p>
+      {% endif %}
+
+      <button class="login-submit" type="submit">
+        Entrar <span aria-hidden="true">↪</span>
+      </button>
+    </form>
+
+    <div class="login-divider"></div>
+  </section>
+</main>
+{% endblock %}

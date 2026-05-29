@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% set active_page = "restrito" %}
+
+{% block title %}Manifestações Recebidas - Cidade Cidadã{% endblock %}
+{% block body_class %}restricted-page{% endblock %}
+
+{% block content %}
+<main class="restricted-shell">
+  <section class="restricted-heading">
+    <div>
+      <h1>Manifestações Recebidas</h1>
+      <p>Gerencie e responda às solicitações dos cidadãos.</p>
+    </div>
+  </section>
+
+  <section class="admin-table-card">
+    <div class="admin-filters">
+      <label class="admin-search" for="buscaManifestacao">
+        <span aria-hidden="true">⌕</span>
+        <input id="buscaManifestacao" type="search" placeholder="Buscar por protocolo, nome ou CPF..." />
+      </label>
+
+      <select id="filtroTipo" aria-label="Filtrar por tipo">
+        <option value="">Todos os Tipos</option>
+        <option value="Reclamação">Reclamação</option>
+        <option value="Sugestão">Sugestão</option>
+        <option value="Elogio">Elogio</option>
+        <option value="Dúvida">Dúvida</option>
+      </select>
+
+      <select id="filtroStatus" aria-label="Filtrar por status">
+        <option value="">Todos os Status</option>
+        <option value="Aberto">Aberto</option>
+        <option value="Respondida">Respondida</option>
+      </select>
+    </div>
+
+    <div class="admin-table-wrap">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Protocolo</th>
+            <th>Tipo</th>
+            <th>Cidadão</th>
+            <th>Assunto</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="listaManifestacoes"></tbody>
+      </table>
+    </div>
+
+    <footer class="table-pagination">
+      <strong id="contadorRegistros">Mostrando 0 registros</strong>
+      <div class="pagination-actions" aria-label="Paginação">
+        <button type="button" disabled>Anterior</button>
+        <button type="button" class="active">1</button>
+        <button type="button">2</button>
+        <button type="button">3</button>
+        <span>...</span>
+        <button type="button">Próxima</button>
+      </div>
+    </footer>
+  </section>
+</main>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/atendente.js') }}"></script>
+{% endblock %}

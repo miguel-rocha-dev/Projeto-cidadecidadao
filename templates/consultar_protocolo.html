@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% set active_page = "consulta" %}
+
+{% block title %}Consultar Protocolo - Cidade Cidadã{% endblock %}
+{% block body_class %}protocol-page{% endblock %}
+
+{% block content %}
+<main class="protocol-shell">
+  <section class="protocol-heading">
+    <h1>Acompanhe sua Manifestação</h1>
+    <p>
+      Insira o número do protocolo e uma forma de contato para visualizar o
+      andamento e a resposta oficial da sua solicitação.
+    </p>
+  </section>
+
+  <section class="protocol-content">
+    <section class="protocol-card">
+      <h2><span aria-hidden="true">⌕</span> Consultar Protocolo</h2>
+      <form class="protocol-form">
+        <div class="protocol-field">
+          <label for="protocoloConsulta">Número do Protocolo *</label>
+          <input id="protocoloConsulta" type="text" placeholder="Ex: 2024.10.4567" required />
+        </div>
+
+        <div class="protocol-field">
+          <label for="contatoConsulta">E-mail ou Telefone Cadastrado *</label>
+          <input id="contatoConsulta" type="text" placeholder="Seu e-mail ou telefone" required />
+        </div>
+
+        <p>Utilize o mesmo contato informado na abertura da manifestação.</p>
+        <button id="btnConsultar" type="button" class="btn-primary protocol-submit">
+          Consultar <span aria-hidden="true">→</span>
+        </button>
+      </form>
+    </section>
+
+    <section class="protocol-result-card" id="consultaResultado">
+      <div class="empty-state">
+        <span class="empty-icon" aria-hidden="true">⌕</span>
+        <h2>Nenhum protocolo consultado</h2>
+        <p>
+          Preencha os dados ao lado para visualizar os detalhes, o status
+          atual e o histórico da sua manifestação.
+        </p>
+      </div>
+    </section>
+  </section>
+</main>
+{% endblock %}
